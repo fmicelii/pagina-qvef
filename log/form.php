@@ -1,35 +1,46 @@
 <?php
-	$nombre= $_POST["nombre"];
-	$apellido = $_POST["apellido"];
-	$email = $_POST["email"];
-	$direccion = $_POST["direccion"];
-    $contrasena = $_POST["contrasena"];
-    $telefono = $_POST["telefono"];
+$nombre = $_POST["nombre"];
+$apellido = $_POST["apellido"];
+$email = $_POST["email"];
+$direccion = $_POST["direccion"];
+$contrasena = $_POST["contrasena"];
+$telefono = $_POST["telefono"];
 
-    $servername = "127.0.0.1";
-    $database = "db_qvef";
-    $username = "alumno";
-    $password = "alumnoipm";
-    
-    $conexion = mysqli_connect($servername, $username, $password, $database); // se crea la conexion
+$servername = "127.0.0.1";
+$database = "db_qvef";
+$username = "alumno";
+$password = "alumnoipm";
 
-    if (!$conexion) {
-        die("Conexion fallida: " . mysqli_connect_error());
+$conexion = mysqli_connect($servername, $username, $password, $database); // se crea la conexion
+
+if (!$conexion) {
+    die("Conexion fallida: " . mysqli_connect_error());
+} else {
+    //insertamos el resultado del formulario
+    $consulta = "SELECT email FROM usuario WHERE email = '$email'";
+    $resultado = mysqli_query($conexion, $consulta);
+
+    // Cambia mysql_num_rows por mysqli_num_rows
+    $numero_filas = mysqli_num_rows($resultado);
+
+    if($numero_filas > 0) {
+        echo "El email ingresado está repetido, por favor ingrese uno nuevo";
+
     }
     else{
-        //insertamos el resultado del formulario
+        $query = "INSERT INTO usuario VALUES (null, '$email', '$nombre', '$apellido', '$direccion', '$contrasena', '$telefono');";
+        $resultado = mysqli_query($conexion, $query);
 
-        $consulta = "select email from usuario where email = '$email'";
-        $resultado = mysqli_query($conexion, $consulta);
-
-        if($mysql_row_number($resultado) > 0){
-            echo "el email ingresado esta repetido, porfavor ingrese uno nuevo";
+        if($resultado){
+            session_start();
+            $_SESSION["nombre"] = $nombre;
+            header("Location: ../index.php");
         }
         else{
-            $query = "insert into usuario values(null,'$email','$nombre', '$apellido','$direccion','$contrasena','$telefono');";
-            $resultado=mysqli_query($conexion, $query);
-        
-        mysqli_close($conexion);
+            echo "Error al registrar el usuario: ".mysqli_error($conexion);
         }
     }
+
+    mysqli_close($conexion);
+}
 ?>

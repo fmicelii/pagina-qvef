@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -43,11 +46,12 @@
                 </div>
 
                 <div class="derechaHC">
+
                     <div class="perfildesplegable">
                         <span class="material-symbols-outlined">account_circle</span>
                         <ul class="perfilcategorias">
                             <li><a href="log/form.html" rel="noreferrer" >> Registrarse</a></li>
-                            <li><a href="log/login.html"</a>> Logearse</a></li>
+                            <li><a href="log/login.html">> Logearse</a></li>
                         </ul>
                     </div>
                     <span class="material-symbols-outlined">local_mall</span>
@@ -68,17 +72,30 @@
                 </div>
 
                 <div class="derechaHP">
+                    <?php
+                    if(isset($_SESSION["nombre"])){
+                        echo $_SESSION["nombre"];
+                        ?>
+                        <div class="perfildesplegable">
+                            <span class="material-symbols-outlined">account_circle</span>
+                        </div>
+                   <?php }else{
+                    ?>
+                    
                     <div class="perfildesplegable">
                         <span class="material-symbols-outlined">account_circle</span>
                         <ul class="perfilcategorias">
                             <li><a href="log/form.html">> Registrarse</a></li>
-                            <li><a href="log/login.html"</a>> Logearse</a></li>
+                            <li><a href="log/login.html">> Logearse</a></li>
                         </ul>
                     </div>
+                    <?php }
+                    ?>
                     <div class="bolsa-compra">
                         <span class="material-symbols-outlined">local_mall</span>
                     </div>
                 </div>
+
             </div>
 <!-- -------------------HEADPC----------------------- -->
         </header>
