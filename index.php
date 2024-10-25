@@ -1,12 +1,29 @@
 <?php
 session_start();
+$servername = "127.0.0.1";
+$database = "db_qvef";
+$username = "alumno";
+$password = "alumnoipm";
+$conexion = mysqli_connect($servername, $username, $password, $database); // se crea la conexion
+
+if (!$conexion) {
+    die("Conexion fallida: " . mysqli_connect_error());
+} 
+else {
+    //insertamos el resultado del formulario
+    $consulta = "SELECT * FROM producto WHERE categoria = 'botin'";
+    $resultado = mysqli_query($conexion, $consulta);
+
+    // Cambia mysql_num_rows por mysqli_num_rows
+    $numero_filas = mysqli_num_rows($resultado);
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles2.css">
     <link rel="website icon" type="png" href="img/logo_negro_icono_QVEF.png">
     <!-- Fuentes e iconos -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -77,6 +94,7 @@ session_start();
                         ?>
                         <p>Hola!</p>
                         <?php
+                        // espacio vacio
                         echo "‎ ". $_SESSION["nombre"];
                         ?>
                         <div class="perfildesplegable">
@@ -156,9 +174,23 @@ session_start();
                 </div>
             </div>
             
+            <!-- AFSDIUHGFADOIUSHGFAIUSHGIUASHGIUSGIUAESIUAESGIUAEWG -->
             <div id="botines-destacados" class="destacados">
                 <h3>BOTINES DESTACADOS</h3>
                 <div class="carousel">
+                    <div class="tarjeta">
+                        <?php
+                    $resultado=mysqli_query($conexion,$consulta);
+                    while($fila=mysqli_fetch_assoc($resultado)){ ?>
+
+                        <img src="<?php echo $fila["img1"]?>">
+                        <div class="tarjetainfo">
+                            <h4><?php echo $fila["nombre"]?></h4>
+                            <p class="desc"><?php echo $fila["descripcion"]?></p>
+                            <p><?php echo $fila["precio"]?></p>
+                        </div>
+                        <?php } ?>
+                    </div>
                     <div class="tarjeta">
                         <a href="producto.html" target="_blank"><img src="img/botines_rojos_phantom1.jpeg" alt="botin nike phantom"></a>
                         <div class="tarjetainfo">
@@ -195,24 +227,8 @@ session_start();
                         <img src="img/botines_negros_borussia1.jpg" alt="botin puma borussia">
                         <div class="tarjetainfo">
                             <h4>Puma Borussia</h4>
-                            <p class="desc">botines maradona</p>
+                            <p class="desc">botines marotta</p>
                             <p>$10.000</p>
-                        </div>
-                    </div>
-                    <div class="tarjeta">
-                        <img src="img/botines_grises_cosmic.webp" alt="botin umbro cosmic">
-                        <div class="tarjetainfo">
-                            <h4>Umbro Cosmic</h4>
-                            <p class="desc">botines mati</p>
-                            <p>$100.000</p>
-                        </div>
-                    </div>
-                    <div class="tarjeta">
-                        <img src="img/botines.jpg" alt="botin">
-                        <div class="tarjetainfo">
-                            <h4>Botines blancos</h4>
-                            <p class="desc">botines malardos</p>
-                            <p>$200.000</p>
                         </div>
                     </div>
                 </div>
@@ -237,7 +253,7 @@ session_start();
                 <h3>CAMISETAS DESTACADAS</h3>
                 <div class="carousel">
                     <div class="tarjeta">
-                        <img src="img/camiseta_boca_lolo.jpg" alt="camiseta boca horrible">
+                        <img src="img/camiseta_boca1.jpg" alt="camiseta boca horrible">
                         <div class="tarjetainfo">
                             <h4>Boca Alternativa</h4>
                             <p class="desc">Camiseta boca</p>
@@ -245,7 +261,7 @@ session_start();
                         </div>
                     </div>
                     <div class="tarjeta">
-                            <img src="img/camiseta_river_fran.jpg" alt="camiseta river">
+                        <img src="img/camiseta_river1.jpg" alt="camiseta river">
                         <div class="tarjetainfo">
                             <h4>River Training</h4>
                             <p class="desc">Camiseta river  </p>
@@ -253,7 +269,7 @@ session_start();
                         </div>
                     </div>
                     <div class="tarjeta">
-                            <img src="img/camiseta_argentina.jpg" alt="camiseta argentina">
+                        <img src="img/camiseta_argentina.jpg" alt="camiseta argentina">
                         <div class="tarjetainfo">
                             <h4>Nike Mercurial</h4>
                             <p class="desc">botines verdes</p>
@@ -261,27 +277,11 @@ session_start();
                         </div>
                     </div>
                     <div class="tarjeta">
-                            <img src="img/camiseta_racing.jpg" alt="camiseta racing">
+                        <img src="img/camiseta_racing.jpg" alt="camiseta racing">
                         <div class="tarjetainfo">
                             <h4>Adidas Copa</h4>
                             <p class="desc">botines blancos</p>
                             <p>$68.000</p>
-                        </div>
-                    </div>
-                    <div class="tarjeta">
-                        <img src="img/camiseta_barcelona.jpg" alt="camiseta barcelona">
-                        <div class="tarjetainfo">
-                            <h4>Puma Borussia</h4>
-                            <p class="desc">botines maradona</p>
-                            <p>$10.000</p>
-                        </div>
-                    </div>
-                    <div class="tarjeta">
-                        <img src="img/camiseta_city.jpg" alt="camiseta manchester ciry">
-                        <div class="tarjetainfo">
-                            <h4>Umbro Cosmic</h4>
-                            <p class="desc">botines mati</p>
-                            <p>$100.000</p>
                         </div>
                     </div>
                     <div class="tarjeta">
@@ -369,9 +369,7 @@ session_start();
                         </ul> -->
                         <h4>índice</h4>
                         <ul>
-                            <li><a href="index.php/#botines-destacados">Botines Destacados</a></li>
-                            <li><a href="index.php/#camisetas-destacadas">Camisetas Destacadas</a></li>
-                            <li><a href="index.php/#productos">Nuestros Productos</a></li>
+                            <li><a href="./index.php">Inicio</a></li>
                             <li><a href="/log/form.html">Registrarse</a></li>
                             <li><a href="/log/login.html">Loggearse</a></li>
                         </ul>
