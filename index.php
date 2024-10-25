@@ -361,9 +361,11 @@ session_start();
                         </ul> -->
                         <h4>índice</h4>
                         <ul>
-                            <li><a href="#botines-destacados">Botines Destacados</a></li>
-                            <li><a href="#camisetas-destacadas">Camisetas Destacadas</a></li>
-                            <li><a href="#productos">Nuestros Productos</a></li>
+                            <li><a href="index.php/#botines-destacados">Botines Destacados</a></li>
+                            <li><a href="index.php/#camisetas-destacadas">Camisetas Destacadas</a></li>
+                            <li><a href="index.php/#productos">Nuestros Productos</a></li>
+                            <li><a href="/log/form.html">Registrarse</a></li>
+                            <li><a href="/log/login.html">Loggearse</a></li>
                         </ul>
                     </div>
                     <div class="footer-links">
@@ -387,7 +389,7 @@ session_start();
             </ul>
         </div>
         <div class="sub-footer2">
-            <p>Copyright© 2024 Que Viva El Futbol. Todos los derechos reservados. <br><a href="t&c.html">Terminos y Condiciones</a></p>
+            <p>Copyright© 2024 Que Viva El Futbol. Todos los derechos reservados. <br><a href="../t&c.html">Terminos y Condiciones</a></p>
         </div>
     </footer>
 
