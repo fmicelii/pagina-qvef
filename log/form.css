@@ -114,3 +114,101 @@ button:active{
     transform: scale(0.95);
     box-shadow: none;
 }
+
+/* *****************  PIEEEEEEEEEEE  ***************** */
+
+footer{
+    background-color: #222;
+    color:#999;
+}
+.footer-container{
+    padding-top: 20px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+.footer-row{
+    display: grid;
+    grid-template-columns: repeat(1 ,1fr);
+    justify-items: center;
+}
+.footer-links{
+    width: 33.3%;
+    padding: 0 50px 20px 20px;
+}
+.footer-links a{
+    color: #999;
+    text-decoration: none;
+}
+.footer-links a:hover{
+    color: #bbb;
+}
+.footer-links img{
+    width: 150%;
+}
+.footer-links h4{
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+.footer-links li{
+    padding: 5px 0;
+    list-style-type: none;
+}
+.footer-links p{
+    font-weight: 100;
+    font-size: 0.9em;
+}
+
+.sub-footer2{
+    display: flex;
+    justify-content: center;
+}
+.sub-footer2 p{
+    font-size: 0.8em;
+    padding: 10px 0 40px 0;
+    text-align: center;
+}
+.sub-footer2 a{
+    color:#999;
+    text-decoration: none;
+}
+.sub-footer2 a:hover{
+    color: #bbb;
+}
+.gallery-contact{
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.gallery-contact span{
+    font-size: 30px;
+    cursor: default;
+    color: #999;
+}
+.gallery-ig{
+    display: flex;
+}
+.gallery-ig li{
+    list-style-type: none;
+    margin-left: 8px;
+}
+.gallery-ig a{
+    color: #999;
+    text-decoration: none;
+}
+.gallery-ig a:hover{
+    color: #bbb;
+}
+ul{
+    padding: 0;
+}
+@media(min-width: 768px){
+    .footer-row{
+        display: grid;
+        grid-template-columns: repeat(3 ,1fr);
+        justify-items: center;
+    }
+}
+/* *****************  PIEEEEEEEEEEE  ***************** */

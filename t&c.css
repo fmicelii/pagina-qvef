@@ -154,9 +154,6 @@ h2{
     font-size: 1.1em;
     text-align: center;
 }
-.tyc p{
-    color: #111;
-}
 h2 + p{
     margin-bottom: 13px;
     font-size: 1em;
@@ -164,6 +161,7 @@ h2 + p{
 }
 p + h3{
     margin-top: 9px;
+    color: #111;
 }
 
 /* *****************  PIEEEEEEEEEEE  ***************** */
