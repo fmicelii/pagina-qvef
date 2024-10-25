@@ -74,12 +74,20 @@ session_start();
                 <div class="derechaHP">
                     <?php
                     if(isset($_SESSION["nombre"])){
-                        echo $_SESSION["nombre"];
+                        ?>
+                        <p>Hola!</p>
+                        <?php
+                        echo "‎ ". $_SESSION["nombre"];
                         ?>
                         <div class="perfildesplegable">
                             <span class="material-symbols-outlined">account_circle</span>
+                            <ul class="perfilcategorias">
+                                <li><a href="destroy.php">> Cerrar Sesion</a></li>
+                            </ul>
                         </div>
-                   <?php }else{
+                        <?php 
+                    }
+                    else{
                     ?>
                     
                     <div class="perfildesplegable">
@@ -160,10 +168,10 @@ session_start();
                         </div>
                     </div>
                     <div class="tarjeta">
-                            <img src="img/botines_rosas_future.avif" alt="botin puma future">
+                            <img src="img/botines_celeste_phantom1.png" alt="botin nike celeste">
                         <div class="tarjetainfo">
-                            <h4>Puma Future 7</h4>
-                            <p class="desc">botines rosas</p>
+                            <h4>Puma Phantom</h4>
+                            <p class="desc">botines celestes</p>
                             <p>$109.000</p>
                         </div>
                     </div>
@@ -176,15 +184,15 @@ session_start();
                         </div>
                     </div>
                     <div class="tarjeta">
-                            <img src="img/botines_blancos_copa.jpg" alt="botin">
+                            <img src="img/botines_verdes_future1.jpg    " alt="botin puma neymar">
                         <div class="tarjetainfo">
-                            <h4>Adidas Copa</h4>
-                            <p class="desc">botines blancos</p>
+                            <h4>Puma Future</h4>
+                            <p class="desc">botines verdes</p>
                             <p>$68.000</p>
                         </div>
                     </div>
                     <div class="tarjeta">
-                        <img src="img/botines_negros_borussia.jpg" alt="botin puma borussia">
+                        <img src="img/botines_negros_borussia1.jpg" alt="botin puma borussia">
                         <div class="tarjetainfo">
                             <h4>Puma Borussia</h4>
                             <p class="desc">botines maradona</p>

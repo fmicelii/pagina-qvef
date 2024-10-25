@@ -36,7 +36,6 @@ body{
     scrollbar-color: #ddd #222;
 } */
 
-
 .pantallainicialpc{
     display: none;
     justify-content: center;
@@ -46,7 +45,7 @@ body{
 }
 .pantallainicialcelu , .pantallainicialpc{
     background-image: linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)),url(img/monumental.jpg);
-    background-position: center top;
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 100vh;
