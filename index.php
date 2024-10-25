@@ -176,7 +176,7 @@ session_start();
                         </div>
                     </div>
                     <div class="tarjeta">
-                            <img src="img/botines_blancos_copa.jfif" alt="botin">
+                            <img src="img/botines_blancos_copa.jpg" alt="botin">
                         <div class="tarjetainfo">
                             <h4>Adidas Copa</h4>
                             <p class="desc">botines blancos</p>
@@ -184,7 +184,7 @@ session_start();
                         </div>
                     </div>
                     <div class="tarjeta">
-                        <img src="img/botines_negros_borussia.jfif" alt="botin puma borussia">
+                        <img src="img/botines_negros_borussia.jpg" alt="botin puma borussia">
                         <div class="tarjetainfo">
                             <h4>Puma Borussia</h4>
                             <p class="desc">botines maradona</p>
