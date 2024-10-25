@@ -178,59 +178,19 @@ else {
             <div id="botines-destacados" class="destacados">
                 <h3>BOTINES DESTACADOS</h3>
                 <div class="carousel">
-                    <div class="tarjeta">
-                        <?php
+                    <?php
                     $resultado=mysqli_query($conexion,$consulta);
                     while($fila=mysqli_fetch_assoc($resultado)){ ?>
 
-                        <img src="<?php echo $fila["img1"]?>">
-                        <div class="tarjetainfo">
-                            <h4><?php echo $fila["nombre"]?></h4>
-                            <p class="desc"><?php echo $fila["descripcion"]?></p>
-                            <p><?php echo $fila["precio"]?></p>
+                        <div class="tarjeta">
+                            <img src="<?php echo $fila["img1"]?>">
+                            <div class="tarjetainfo">
+                                <h4><?php echo $fila["nombre"]?></h4>
+                                <p class="desc"><?php echo $fila["descripcion"]?></p>
+                                <p><?php echo $fila["precio"]?></p>
+                            </div>
                         </div>
                         <?php } ?>
-                    </div>
-                    <div class="tarjeta">
-                        <a href="producto.html" target="_blank"><img src="img/botines_rojos_phantom1.jpeg" alt="botin nike phantom"></a>
-                        <div class="tarjetainfo">
-                            <h4>Nike Phantom</h4>
-                            <p class="desc">botines rojos</p>
-                            <p>$30.000</p>
-                        </div>
-                    </div>
-                    <div class="tarjeta">
-                            <img src="img/botines_celeste_phantom1.png" alt="botin nike celeste">
-                        <div class="tarjetainfo">
-                            <h4>Puma Phantom</h4>
-                            <p class="desc">botines celestes</p>
-                            <p>$109.000</p>
-                        </div>
-                    </div>
-                    <div class="tarjeta">
-                            <img src="img/botines_verdes_mercurial.jpg" alt="botin nike mercurial">
-                        <div class="tarjetainfo">
-                            <h4>Nike Mercurial</h4>
-                            <p class="desc">botines verdes</p>
-                            <p>$85.000</p>
-                        </div>
-                    </div>
-                    <div class="tarjeta">
-                            <img src="img/botines_verdes_future1.jpg    " alt="botin puma neymar">
-                        <div class="tarjetainfo">
-                            <h4>Puma Future</h4>
-                            <p class="desc">botines verdes</p>
-                            <p>$68.000</p>
-                        </div>
-                    </div>
-                    <div class="tarjeta">
-                        <img src="img/botines_negros_borussia1.jpg" alt="botin puma borussia">
-                        <div class="tarjetainfo">
-                            <h4>Puma Borussia</h4>
-                            <p class="desc">botines marotta</p>
-                            <p>$10.000</p>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="content-varios">    
