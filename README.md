@@ -1,3 +1,2 @@
 # pagina-qvef
-pagina para el proyecto de la expo 2024
-<img src="img/logo_negro_QVEF.png" width="100%"/>
+![bombonera_fondo](https://github.com/user-attachments/assets/4ea35610-60a5-498c-8905-915563375630)
