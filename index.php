@@ -12,7 +12,11 @@ if (!$conexion) {
 else {
     //insertamos el resultado del formulario
     $consulta = "SELECT * FROM producto WHERE categoria = 'botin'";
+    $consulta2 = "SELECT * FROM producto WHERE categoria = 'camiseta'";
+    $consulta3 = "SELECT * FROM producto";
     $resultado = mysqli_query($conexion, $consulta);
+    $resultado2 = mysqli_query($conexion, $consulta2);
+    $resultado2 = mysqli_query($conexion, $consulta3);
 
     // Cambia mysql_num_rows por mysqli_num_rows
     $numero_filas = mysqli_num_rows($resultado);
@@ -180,14 +184,14 @@ else {
                 <div class="carousel">
                     <?php
                     $resultado=mysqli_query($conexion,$consulta);
-                    while($fila=mysqli_fetch_assoc($resultado)){ ?>
+                    while($fila=mysqli_fetch_assoc($resultado2)){ ?>
 
                         <div class="tarjeta">
                             <img src="<?php echo $fila["img1"]?>">
                             <div class="tarjetainfo">
                                 <h4><?php echo $fila["nombre"]?></h4>
                                 <p class="desc"><?php echo $fila["descripcion"]?></p>
-                                <p><?php echo $fila["precio"]?></p>
+                                <p><?php echo $fila["precio"]?>$</p>
                             </div>
                         </div>
                         <?php } ?>
@@ -212,47 +216,21 @@ else {
             <div id="camisetas-destacadas" class="destacados">
                 <h3>CAMISETAS DESTACADAS</h3>
                 <div class="carousel">
-                    <div class="tarjeta">
-                        <img src="img/camiseta_boca1.jpg" alt="camiseta boca horrible">
-                        <div class="tarjetainfo">
-                            <h4>Boca Alternativa</h4>
-                            <p class="desc">Camiseta boca</p>
-                            <p>$3.000</p>
+                    <?php
+                    $resultado=mysqli_query($conexion,$consulta);
+                    while($fila=mysqli_fetch_assoc($resultado2)){ ?>
+
+                        <div class="tarjeta">
+                            <img src="<?php echo $fila["img1"]?>">
+                            <div class="tarjetainfo">
+                                <h4><?php echo $fila["nombre"]?></h4>
+                                <p class="desc"><?php echo $fila["descripcion"]?></p>
+                                <p><?php echo $fila["precio"]?>$</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="tarjeta">
-                        <img src="img/camiseta_river1.jpg" alt="camiseta river">
-                        <div class="tarjetainfo">
-                            <h4>River Training</h4>
-                            <p class="desc">Camiseta river  </p>
-                            <p>$100.000</p>
-                        </div>
-                    </div>
-                    <div class="tarjeta">
-                        <img src="img/camiseta_argentina.jpg" alt="camiseta argentina">
-                        <div class="tarjetainfo">
-                            <h4>Nike Mercurial</h4>
-                            <p class="desc">botines verdes</p>
-                            <p>$85.000</p>
-                        </div>
-                    </div>
-                    <div class="tarjeta">
-                        <img src="img/camiseta_racing.jpg" alt="camiseta racing">
-                        <div class="tarjetainfo">
-                            <h4>Adidas Copa</h4>
-                            <p class="desc">botines blancos</p>
-                            <p>$68.000</p>
-                        </div>
-                    </div>
-                    <div class="tarjeta">
-                        <img src="img/camiseta_defe.jpg" alt="camiseta defensores">
-                        <div class="tarjetainfo">
-                            <h4>Botines blancos</h4>
-                            <p class="desc">botines malardos</p>
-                            <p>$200.000</p>
-                        </div>
-                    </div>
+                        <?php } ?>
                 </div>
+
             </div>
             <div class="image-neymar">
                 <h2>VIVE LA EXPERIENCIA</h2>
