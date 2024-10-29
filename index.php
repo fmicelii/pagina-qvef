@@ -4,24 +4,34 @@ $servername = "127.0.0.1";
 $database = "db_qvef";
 $username = "alumno";
 $password = "alumnoipm";
-$conexion = mysqli_connect($servername, $username, $password, $database); // se crea la conexion
+$conexion = mysqli_connect($servername, $username, $password, $database); // Se crea la conexión
 
 if (!$conexion) {
-    die("Conexion fallida: " . mysqli_connect_error());
+    die("Conexión fallida: " . mysqli_connect_error());
 } 
-else {
-    //insertamos el resultado del formulario
-    $consulta = "SELECT * FROM producto WHERE categoria = 'botin'";
-    $consulta2 = "SELECT * FROM producto WHERE categoria = 'camiseta'";
-    $consulta3 = "SELECT * FROM producto";
-    $resultado = mysqli_query($conexion, $consulta);
-    $resultado2 = mysqli_query($conexion, $consulta2);
-    $resultado2 = mysqli_query($conexion, $consulta3);
 
-    // Cambia mysql_num_rows por mysqli_num_rows
-    $numero_filas = mysqli_num_rows($resultado);
-}
+// Consultas para obtener productos por categoría
+$consulta_botin = "SELECT * FROM producto WHERE categoria = 'botin'";
+$consulta_camiseta = "SELECT * FROM producto WHERE categoria = 'camiseta'";
+
+$resultado_botin = mysqli_query($conexion, $consulta_botin);
+$resultado_camiseta = mysqli_query($conexion, $consulta_camiseta);
+
+// Obtén el número de filas de la consulta de botines
+$numero_filas_botin = mysqli_num_rows($resultado_botin);
+// Si necesitas también el número de camisetas, puedes obtenerlo así:
+$numero_filas_camiseta = mysqli_num_rows($resultado_camiseta);
+
+
+// Consulta para obtener todos los productos
+$consulta_todos = "SELECT * FROM producto";
+$resultado_todos = mysqli_query($conexion, $consulta_todos);
+
+// Comprobación del número de filas
+$numero_filas_todos = mysqli_num_rows($resultado_todos);
+
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -183,18 +193,17 @@ else {
                 <h3>BOTINES DESTACADOS</h3>
                 <div class="carousel">
                     <?php
-                    $resultado=mysqli_query($conexion,$consulta);
-                    while($fila=mysqli_fetch_assoc($resultado2)){ ?>
-
-                        <div class="tarjeta">
-                            <img src="<?php echo $fila["img1"]?>">
-                            <div class="tarjetainfo">
-                                <h4><?php echo $fila["nombre"]?></h4>
-                                <p class="desc"><?php echo $fila["descripcion"]?></p>
-                                <p><?php echo $fila["precio"]?>$</p>
+                        while($fila = mysqli_fetch_assoc($resultado_botin)) { ?>
+                            <div class="tarjeta">
+                                <img src="<?php echo $fila["img1"]; ?>">
+                                <div class="tarjetainfo">
+                                    <h4><?php echo $fila["nombre"]; ?></h4>
+                                    <p class="desc"><?php echo $fila["descripcion"]; ?></p>
+                                    <p><?php echo $fila["precio"]; ?>$</p>
+                                </div>
                             </div>
-                        </div>
                         <?php } ?>
+
                 </div>
             </div>
             <div class="content-varios">    
@@ -217,17 +226,15 @@ else {
                 <h3>CAMISETAS DESTACADAS</h3>
                 <div class="carousel">
                     <?php
-                    $resultado=mysqli_query($conexion,$consulta);
-                    while($fila=mysqli_fetch_assoc($resultado2)){ ?>
-
-                        <div class="tarjeta">
-                            <img src="<?php echo $fila["img1"]?>">
-                            <div class="tarjetainfo">
-                                <h4><?php echo $fila["nombre"]?></h4>
-                                <p class="desc"><?php echo $fila["descripcion"]?></p>
-                                <p><?php echo $fila["precio"]?>$</p>
+                while($fila = mysqli_fetch_assoc($resultado_camiseta)) { ?>
+                            <div class="tarjeta">
+                                <img src="<?php echo $fila["img1"]; ?>">
+                                <div class="tarjetainfo">
+                                    <h4><?php echo $fila["nombre"]; ?></h4>
+                                    <p class="desc"><?php echo $fila["descripcion"]; ?></p>
+                                    <p><?php echo $fila["precio"]; ?>$</p>
+                                </div>
                             </div>
-                        </div>
                         <?php } ?>
                 </div>
 
@@ -240,48 +247,24 @@ else {
             
             <div id="productos" class="general">
                 <h3>NUESTROS PRODUCTOS</h3>
-                    <section id="tarjetas">
-                        <div class="tarjeta1">
-                            <a class="tarjeta-imagen" href="producto.html" target="_blank"><img src="img/botines_rojos_phantom1.jpeg" alt="botin nike phantom"></a>
-                            <div class="tarjetainfo">
-                                <h4>Nike Phantom</h4>
-                                <p class="desc">botines rojos</p>
-                                <p>$30.000</p>
+                <div class="carousel">
+
+                <?php
+                    if ($numero_filas_todos > 0) {
+                        while ($fila = mysqli_fetch_assoc($resultado_todos)) { ?>
+                            <div class="tarjeta">
+                                <img src="<?php echo $fila["img1"]; ?>">
+                                <div class="tarjetainfo">
+                                    <h4><?php echo $fila["nombre"]; ?></h4>
+                                    <p class="desc"><?php echo $fila["descripcion"]; ?></p>
+                                    <p><?php echo $fila["precio"]; ?>$</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="tarjeta1">
-                            <a class="tarjeta-imagen" href="producto.html" target="_blank"><img src="img/botines_rojos_phantom1.jpeg" alt="botin nike phantom"></a>
-                            <div class="tarjetainfo">
-                            <h4>Nike Phantom</h4>
-                            <p class="desc">botines rojos</p>
-                            <p>$30.000</p>
-                        </div>
-                    </div>
-                    <div class="tarjeta1">
-                        <a class="tarjeta-imagen" href="producto.html" target="_blank"><img src="img/botines_rojos_phantom1.jpeg" alt="botin nike phantom"></a>
-                        <div class="tarjetainfo">
-                            <h4>Nike Phantom</h4>
-                            <p class="desc">botines rojos</p>
-                            <p>$30.000</p>
-                        </div>
-                    </div>
-                    <div class="tarjeta1">
-                        <a class="tarjeta-imagen" href="producto.html" target="_blank"><img src="img/botines_rojos_phantom1.jpeg" alt="botin nike phantom"></a>
-                        <div class="tarjetainfo">
-                            <h4>Nike Phantom</h4>
-                            <p class="desc">botines rojos</p>
-                            <p>$30.000</p>
-                        </div>
-                    </div>
-                    <div class="tarjeta1">
-                        <a class="tarjeta-imagen" href="producto.html" target="_blank"><img src="img/botines_rojos_phantom1.jpeg" alt="botin nike phantom"></a>
-                        <div class="tarjetainfo">
-                            <h4>Nike Phantom</h4>
-                            <p class="desc">botines rojos</p>
-                            <p>$30.000</p>
-                        </div>
-                    </div>
-                </section>
+                        <?php }
+                    } else {
+                        echo "No hay productos disponibles.";
+                    } ?>
+                </div>
             </div>
             
         </div> <!--DIV TODO-->
