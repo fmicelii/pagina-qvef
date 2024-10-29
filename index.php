@@ -24,7 +24,7 @@ $numero_filas_camiseta = mysqli_num_rows($resultado_camiseta);
 
 
 // Consulta para obtener todos los productos
-$consulta_todos = "SELECT * FROM producto";
+$consulta_todos = "SELECT * FROM producto order by rand()";
 $resultado_todos = mysqli_query($conexion, $consulta_todos);
 
 // Comprobación del número de filas
@@ -253,12 +253,14 @@ $numero_filas_todos = mysqli_num_rows($resultado_todos);
                     if ($numero_filas_todos > 0) {
                         while ($fila = mysqli_fetch_assoc($resultado_todos)) { ?>
                             <div class="tarjeta">
-                                <img src="<?php echo $fila["img1"]; ?>">
-                                <div class="tarjetainfo">
-                                    <h4><?php echo $fila["nombre"]; ?></h4>
-                                    <p class="desc"><?php echo $fila["descripcion"]; ?></p>
-                                    <p><?php echo $fila["precio"]; ?>$</p>
-                                </div>
+                                <a href="detalle_producto.php?id=<?php echo $fila['id']; ?>">
+                                    <img src="<?php echo $fila["img1"]; ?>">
+                                    <div class="tarjetainfo">
+                                        <h4><?php echo $fila["nombre"]; ?></h4>
+                                        <p class="desc"><?php echo $fila["descripcion"]; ?></p>
+                                        <p><?php echo $fila["precio"]; ?>$</p>
+                                    </div>
+                                </a>
                             </div>
                         <?php }
                     } else {
