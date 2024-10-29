@@ -11,8 +11,8 @@ if (!$conexion) {
 } 
 
 // Consultas para obtener productos por categoría
-$consulta_botin = "SELECT * FROM producto WHERE categoria = 'botin'";
-$consulta_camiseta = "SELECT * FROM producto WHERE categoria = 'camiseta'";
+$consulta_botin = "SELECT * FROM producto WHERE categoria = 'botin' order by rand()";
+$consulta_camiseta = "SELECT * FROM producto WHERE categoria = 'camiseta' order by rand()";
 
 $resultado_botin = mysqli_query($conexion, $consulta_botin);
 $resultado_camiseta = mysqli_query($conexion, $consulta_camiseta);
@@ -38,8 +38,8 @@ $numero_filas_todos = mysqli_num_rows($resultado_todos);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles2.css">
-    <link rel="website icon" type="png" href="img/logo_negro_icono_QVEF.png">
     <!-- Fuentes e iconos -->
+    <link rel="website icon" type="png" href="img/logo_negro_icono_QVEF.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
@@ -192,17 +192,23 @@ $numero_filas_todos = mysqli_num_rows($resultado_todos);
             <div id="botines-destacados" class="destacados">
                 <h3>BOTINES DESTACADOS</h3>
                 <div class="carousel">
-                    <?php
-                        while($fila = mysqli_fetch_assoc($resultado_botin)) { ?>
-                            <div class="tarjeta">
-                                <img src="<?php echo $fila["img1"]; ?>">
-                                <div class="tarjetainfo">
-                                    <h4><?php echo $fila["nombre"]; ?></h4>
-                                    <p class="desc"><?php echo $fila["descripcion"]; ?></p>
-                                    <p><?php echo $fila["precio"]; ?>$</p>
+                <?php
+                        if ($numero_filas_todos > 0) {
+                            while ($fila = mysqli_fetch_assoc($resultado_botin)) { ?>
+                                <div class="tarjeta">
+                                    <a class="no-underline" href="detalle_producto.php?id=<?php echo $fila['id']; ?>">
+                                        <img src="<?php echo $fila["img1"]; ?>">
+                                        <div class="tarjetainfo">
+                                            <h4><?php echo $fila["nombre"]; ?></h4>
+                                            <p class="desc"><?php echo $fila["descripcion"]; ?></p>
+                                            <p><?php echo $fila["precio"]; ?>$</p>
+                                        </div>
+                                    </a>
                                 </div>
-                            </div>
-                        <?php } ?>
+                            <?php }
+                            } else {
+                                echo "No hay productos disponibles.";
+                            } ?>
 
                 </div>
             </div>
@@ -225,17 +231,23 @@ $numero_filas_todos = mysqli_num_rows($resultado_todos);
             <div id="camisetas-destacadas" class="destacados">
                 <h3>CAMISETAS DESTACADAS</h3>
                 <div class="carousel">
-                    <?php
-                while($fila = mysqli_fetch_assoc($resultado_camiseta)) { ?>
-                            <div class="tarjeta">
-                                <img src="<?php echo $fila["img1"]; ?>">
-                                <div class="tarjetainfo">
-                                    <h4><?php echo $fila["nombre"]; ?></h4>
-                                    <p class="desc"><?php echo $fila["descripcion"]; ?></p>
-                                    <p><?php echo $fila["precio"]; ?>$</p>
+                <?php
+                        if ($numero_filas_todos > 0) {
+                            while ($fila = mysqli_fetch_assoc($resultado_camiseta)) { ?>
+                                <div class="tarjeta">
+                                    <a class="no-underline" href="detalle_producto.php?id=<?php echo $fila['id']; ?>">
+                                        <img src="<?php echo $fila["img1"]; ?>">
+                                        <div class="tarjetainfo">
+                                            <h4><?php echo $fila["nombre"]; ?></h4>
+                                            <p class="desc"><?php echo $fila["descripcion"]; ?></p>
+                                            <p><?php echo $fila["precio"]; ?>$</p>
+                                        </div>
+                                    </a>
                                 </div>
-                            </div>
-                        <?php } ?>
+                            <?php }
+                            } else {
+                                echo "No hay productos disponibles.";
+                            } ?>
                 </div>
 
             </div>
@@ -248,24 +260,23 @@ $numero_filas_todos = mysqli_num_rows($resultado_todos);
             <div id="productos" class="general">
                 <h3>NUESTROS PRODUCTOS</h3>
                 <div class="carousel">
-
-                <?php
-                    if ($numero_filas_todos > 0) {
-                        while ($fila = mysqli_fetch_assoc($resultado_todos)) { ?>
-                            <div class="tarjeta">
-                                <a href="detalle_producto.php?id=<?php echo $fila['id']; ?>">
-                                    <img src="<?php echo $fila["img1"]; ?>">
-                                    <div class="tarjetainfo">
-                                        <h4><?php echo $fila["nombre"]; ?></h4>
-                                        <p class="desc"><?php echo $fila["descripcion"]; ?></p>
-                                        <p><?php echo $fila["precio"]; ?>$</p>
-                                    </div>
-                                </a>
-                            </div>
-                        <?php }
-                    } else {
-                        echo "No hay productos disponibles.";
-                    } ?>
+                    <?php
+                        if ($numero_filas_todos > 0) {
+                            while ($fila = mysqli_fetch_assoc($resultado_todos)) { ?>
+                                <div class="tarjeta">
+                                    <a class="no-underline" href="detalle_producto.php?id=<?php echo $fila['id']; ?>">
+                                        <img src="<?php echo $fila["img1"]; ?>">
+                                        <div class="tarjetainfo">
+                                            <h4><?php echo $fila["nombre"]; ?></h4>
+                                            <p class="desc"><?php echo $fila["descripcion"]; ?></p>
+                                            <p><?php echo $fila["precio"]; ?>$</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            <?php }
+                            } else {
+                                echo "No hay productos disponibles.";
+                            } ?>
                 </div>
             </div>
             
@@ -321,6 +332,5 @@ $numero_filas_todos = mysqli_num_rows($resultado_todos);
             <p>Copyright© 2024 Que Viva El Futbol. Todos los derechos reservados. <br><a href="../t&c.html">Terminos y Condiciones</a></p>
         </div>
     </footer>
-
 </body>
 </html>

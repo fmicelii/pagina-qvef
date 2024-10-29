@@ -152,7 +152,9 @@ h1{
         text-shadow: 0 0 20px #999;
     }
 }
-
+.no-underline{
+    text-decoration: none;
+}
 .headpc{
     display: none;
 }
@@ -325,6 +327,7 @@ h1{
 }
 .tarjetainfo > *{
     padding: 1px 0;
+    color: #222;
 }
 .desc{
     font-size: 0.9em;
