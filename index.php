@@ -77,7 +77,21 @@ $numero_filas_todos = mysqli_num_rows($resultado_todos);
                 </div>
 
                 <div class="derechaHC">
-
+                <?php
+                    if(isset($_SESSION["nombre"])){
+                        
+                        ?>
+                        <div class="perfildesplegable">
+                            <span class="material-symbols-outlined">account_circle</span>
+                            <ul class="perfilcategorias">
+                                <li class="echo-session"> <?php echo "> ". $_SESSION["nombre"]; ?></li>
+                                <li><a href="destroy.php">> Cerrar Sesion</a></li>
+                            </ul>
+                        </div>
+                        <?php 
+                    }
+                    else {
+                    ?>
                     <div class="perfildesplegable">
                         <span class="material-symbols-outlined">account_circle</span>
                         <ul class="perfilcategorias">
@@ -85,13 +99,15 @@ $numero_filas_todos = mysqli_num_rows($resultado_todos);
                             <li><a href="log/login.html">> Logearse</a></li>
                         </ul>
                     </div>
+                    <?php }
+                    ?>
                     <span class="material-symbols-outlined">local_mall</span>
                 </div>
             </div>
 <!-- -------------------HEADPC----------------------- -->
             <div class="headpc" id="headpc">
                 <div class="izquierdaHP">
-                    <a href="index.html"><img class="logohead" src="img/logo_negro_QVEF.png" alt=""></a>
+                    <a href="index.php"><img class="logohead" src="img/logo_negro_QVEF.png" alt=""></a>
                 </div>
                 
                 <div class="medioHP">
@@ -322,7 +338,7 @@ $numero_filas_todos = mysqli_num_rows($resultado_todos);
             </div>
         </div>
         <div class="gallery-contact">
-            <span class="material-symbols-outlined psychology">psychology</span>
+            <span class="material-symbols-outlined psychology">alternate_email</span>
             <ul class="gallery-ig">
                 <li><a href="https://www.instagram.com/franmicelii/">Francisco Miceli</a></li>
                 <li><a href="https://www.instagram.com/lolotabuada_/">Lorenzo Tabuada</a></li>

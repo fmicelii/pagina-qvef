@@ -273,7 +273,7 @@ mysqli_close($conexion);
             </div>
         </div>
         <div class="gallery-contact">
-            <span class="material-symbols-outlined psychology">psychology</span>
+            <span class="material-symbols-outlined psychology">alternate_email</span>
             <ul class="gallery-ig">
                 <li><a href="https://www.instagram.com/franmicelii/">Francisco Miceli</a></li>
                 <li><a href="https://www.instagram.com/lolotabuada_/">Lorenzo Tabuada</a></li>
